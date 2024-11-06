@@ -62,7 +62,12 @@ body {
 
 /* Main content styles */
 
-
+.content {
+    margin-left: 300px;
+    
+    transition: margin-left 0.3s;
+    max-width: calc(100% - 300px); /* Occupy full width minus sidebar on large screens */
+}
 /* Sidebar hidden for small screens */
 .sidebar-hidden {
     transform: translateX(-100%);
