@@ -1,0 +1,232 @@
+/* ========================= */
+/*          VARIABLES        */
+/* ========================= */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #388E3C;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --text-light: #ccc;
+    --navbar-bg: rgba(0, 0, 0, 0.8);
+    --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    --border-radius: 8px;
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* ========================= */
+/*          GENERAL          */
+/* ========================= */
+body {
+    background-color: var(--background-color);
+    font-family: var(--font-family);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background 0.3s ease-in-out, color 0.3s;
+}
+
+.content {
+    flex: 1;
+}
+
+/* ========================= */
+/*          NAVBAR           */
+/* ========================= */
+/* 🚀 Glassmorphism Navbar */
+.glass-navbar {
+    background: rgba(25, 21, 36, 1.0);
+    backdrop-filter: blur(15px);
+    
+    transition: background 0.3s ease-in-out, box-shadow 0.3s;
+    padding: 10px 20px;
+}
+
+.glass-navbar.navbar-scrolled {
+    background: rgba(25, 21, 36, 0.521);
+   
+}
+
+.glass-navbar .brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.glass-navbar .brand-logo:hover {
+    transform: scale(1.05);
+}
+
+/* 🚀 Dropdown Animation */
+.dropdown-animated {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================= */
+/*          BUTTONS          */
+/* ========================= */
+.btn-custom {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-custom:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+/* ========================= */
+/*          FORMS            */
+/* ========================= */
+.form-control {
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.form-control:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    transform: scale(1.02);
+}
+
+/* 🚀 Flash Messages */
+.flash-message {
+    transition: opacity 0.5s ease-in-out, transform 0.3s;
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: var(--box-shadow);
+}
+
+.flash-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.flash-message.hide {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+/* ========================= */
+/*          CART            */
+/* ========================= */
+.cart-container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    box-shadow: var(--box-shadow);
+    color: white;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background 0.2s ease-in-out;
+}
+
+.cart-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-quantity {
+    font-weight: bold;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.cart-item-quantity:hover {
+    transform: scale(1.2);
+}
+
+/* ========================= */
+/*         FOOTER           */
+/* ========================= */
+.footer {
+    background-color: var(--navbar-bg);
+    color: var(--text-color);
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* ========================= */
+/*      ANIMATIONS          */
+/* ========================= */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* 🚀 Smooth Page Load */
+.fade-in {
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================= */
+/*      RESPONSIVENESS      */
+/* ========================= */
+@media (max-width: 768px) {
+    .product-item {
+        flex: 1 0 calc(48% - 10px);
+    }
+
+    .cart-container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 420px) {
+    .product-item {
+        flex: 1 0 100%;
+    }
+
+    .btn-custom {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,116 @@
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true" aria-live="polite">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content success-modal border-0 shadow-lg">
+            <div class="modal-header">
+                <h5 class="modal-title text-white">
+                    ✅ Success!
+                </h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p id="successMessage" class="success-text">Checkout Successful</p> <!-- Dynamic message -->
+            </div>
+            <div class="modal-footer border-0 justify-content-center">
+                <button type="button" class="btn close-btn" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Success Modal */
+.success-modal {
+    border-radius: 12px;
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(40, 167, 69, 0.2);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    overflow: hidden;
+    animation: fadeInUp 0.4s ease-in-out;
+}
+
+/* Modal Header */
+.modal-header {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+    padding: 20px;
+    box-shadow: inset 0 -2px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Success Icon */
+.success-icon {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 10px;
+    animation: popIn 0.5s ease-in-out;
+    text-shadow: 0 0 12px rgba(40, 167, 69, 0.5);
+}
+
+/* Success Text */
+.success-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #222;
+}
+
+/* Close Button */
+.close-btn {
+    background: #28a745;
+    color: white;
+    font-weight: bold;
+    padding: 14px 24px;
+    font-size: 1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.close-btn:hover {
+    background: #1e7e34;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(40, 167, 69, 0.5);
+}
+
+/* Smooth Pop-in Animation */
+@keyframes popIn {
+    0% {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    80% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .success-modal {
+        width: 90%;
+    }
+}
+</style>

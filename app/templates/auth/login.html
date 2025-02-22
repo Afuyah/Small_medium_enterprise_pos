@@ -1,0 +1,345 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Login - Nawiri Enterprise{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <!-- Animated Background -->
+        <div class="auth-card__gradient"></div>
+        
+        <!-- Auth Content -->
+        <div class="auth-card__content">
+            <!-- Security Headers -->
+            <div class="auth-header">
+                <div class="security-badge">
+                    <i class="fas fa-shield-check"></i>
+                    <span>Secure Login</span>
+                </div>
+                <h1 class="auth-title">Welcome Back</h1>
+                <p class="auth-subtitle">Manage your business operations</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form">
+                <!-- Form Fields -->
+                <div class="input-group">
+                    <input type="text" id="username" name="username" autocomplete="username" required>
+                    <label for="username">Username</label>
+                    <i class="fas fa-user icon"></i>
+                    <div class="input-progress"></div>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="password" name="password" autocomplete="current-password" required>
+                    <label for="password">Password</label>
+                    <i class="fas fa-lock icon"></i>
+                    <button type="button" class="password-toggle">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <div class="input-progress"></div>
+                </div>
+
+                <!-- Security Features -->
+                <div class="security-features">
+                    <div class="risk-assessment">
+                        <i class="fas fa-clock"></i>
+                        <span>Last login: 2h ago</span>
+                    </div>
+                   
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="auth-submit">
+                    <span class="submit-text">Authenticate</span>
+                    <div class="submit-loader">
+                        <div class="loader-spinner"></div>
+                    </div>
+                </button>
+            </form>
+        </div>
+
+        <!-- 2FA Overlay -->
+        <div class="twofactor-overlay">
+            <div class="twofactor-content">
+                <h3>Two-Factor Authentication</h3>
+                <div class="otp-inputs">
+                    <input type="number" pattern="\d*" maxlength="1" autofocus>
+                    <input type="number" pattern="\d*" maxlength="1">
+                    <input type="number" pattern="\d*" maxlength="1">
+                    <input type="number" pattern="\d*" maxlength="1">
+                    <input type="number" pattern="\d*" maxlength="1">
+                    <input type="number" pattern="\d*" maxlength="1">
+                </div>
+                <button class="otp-submit">Verify Identity</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Status -->
+    <div class="system-status">
+        <i class="fas fa-server"></i>
+        <span>All systems operational</span>
+    </div>
+</div>
+
+<style>
+:root {
+    --auth-bg: #0f172a;
+    --primary-accent: #7c3aed;
+    --input-bg: rgba(255, 255, 255, 0.05);
+}
+
+.auth-container {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background: var(--auth-bg);
+    font-family: 'Inter', sans-serif;
+}
+
+.auth-card {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.auth-card__gradient {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 0%, 
+        rgba(124, 58, 237, 0.15) 0%, 
+        transparent 60%);
+    animation: gradient-pulse 8s infinite;
+}
+
+@keyframes gradient-pulse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.auth-card__content {
+    position: relative;
+    padding: 2.5rem;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.security-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.auth-title {
+    font-size: 1.75rem;
+    margin: 1.5rem 0 0.5rem;
+    background: linear-gradient(to right, #fff, #ddd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.auth-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 2.5rem;
+    background: var(--input-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+.input-group label {
+    position: absolute;
+    left: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+    transform: translateY(-180%);
+    font-size: 0.8rem;
+    color: var(--primary-accent);
+}
+
+.icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+
+.auth-submit {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-accent);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.auth-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+}
+
+.submit-loader {
+    position: absolute;
+    inset: 0;
+    background: var(--primary-accent);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.twofactor-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('loginForm');
+    const passwordToggle = document.querySelector('.password-toggle');
+    
+    // Password visibility toggle
+    passwordToggle.addEventListener('click', () => {
+        const passwordField = document.getElementById('password');
+        const isPassword = passwordField.type === 'password';
+        passwordField.type = isPassword ? 'text' : 'password';
+        passwordToggle.innerHTML = isPassword ? 
+            '<i class="fas fa-eye-slash"></i>' : 
+            '<i class="fas fa-eye"></i>';
+    });
+
+    // Form submission handler
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitButton = document.querySelector('.auth-submit');
+        
+        // Show loading state
+        submitButton.disabled = true;
+        submitButton.querySelector('.submit-text').style.opacity = '0';
+        submitButton.querySelector('.submit-loader').style.display = 'flex';
+
+        try {
+            const response = await fetch('{{ url_for("auth.login") }}', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: document.getElementById('username').value,
+                    password: document.getElementById('password').value
+                })
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                // Handle 2FA requirement
+                if (result.twofactor_required) {
+                    document.querySelector('.twofactor-overlay').style.display = 'flex';
+                } else {
+                    window.location.href = result.redirect_url;
+                }
+            } else {
+                showError(result.message);
+            }
+        } catch (error) {
+            showError('Connection error - please try again');
+        } finally {
+            submitButton.disabled = false;
+            submitButton.querySelector('.submit-text').style.opacity = '1';
+            submitButton.querySelector('.submit-loader').style.display = 'none';
+        }
+    });
+
+    function showError(message) {
+        const errorElement = document.createElement('div');
+        errorElement.className = 'auth-error';
+        errorElement.innerHTML = `
+            <i class="fas fa-exclamation-circle"></i>
+            <span>${message}</span>
+        `;
+        form.prepend(errorElement);
+        
+        setTimeout(() => {
+            errorElement.classList.add('visible');
+        }, 10);
+
+        setTimeout(() => {
+            errorElement.remove();
+        }, 5000);
+    }
+});
+</script>
+{% endblock %}

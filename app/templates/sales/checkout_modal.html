@@ -1,0 +1,174 @@
+<!-- Checkout Confirmation Modal -->
+<div class="modal fade" id="checkoutConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="checkoutConfirmationModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content receipt-modal border-0 shadow-lg">
+            <div class="modal-header bg-gradient text-center">
+                <h5 class="modal-title w-100 text-white">🛒 Checkout Summary</h5>
+            </div>
+            <div class="modal-body px-4 py-4">
+                <div class="receipt-header text-center mb-3">
+                    <p class="small text-muted">Review your order before proceeding</p>
+                </div>
+
+                <!-- Checkout Items List -->
+                <div id="checkout-items-list" class="checkout-items-list p-3"></div>
+
+                <!-- Divider -->
+                <div class="divider"></div>
+
+                <!-- Total Amount -->
+                <div class="d-flex justify-content-between align-items-center mt-3 fw-bold">
+                    <span class="text-secondary">Total:</span>
+                    <span id="checkout-total-amount" class="total-price">Ksh 0.00</span>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="mt-4">
+                    <label for="payment-method" class="form-label fw-bold">Payment Method</label>
+                    <select id="payment-method" class="form-select stylish-select">
+                        <option value="cash">💵 Cash</option>
+                        <option value="mpesa">📱 M-Pesa</option>
+                        <option value="credit">🕒 Not Paid</option>
+                    </select>
+                </div>
+
+                <!-- Customer Name Input -->
+                <div class="mt-3" id="customer-name-container" style="display: none;">
+                    <label for="customer-name" class="form-label">Customer Name</label>
+                    <input type="text" id="customer-name" class="form-control stylish-input" placeholder="Enter customer name" />
+                </div>
+
+                <!-- Error Message Display -->
+                <div id="error-message" class="mt-3 text-danger error-message d-none">
+                    <small>Please fill out all required fields.</small>
+                </div>
+            </div>
+
+            <div class="modal-footer d-flex justify-content-between p-3 border-0">
+                <button type="button" class="btn cancel-btn" data-dismiss="modal">Cancel</button>
+                <button type="button" id="confirm-checkout-btn" class="btn confirm-btn">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Glassmorphism Effect */
+.receipt-modal {
+    border-radius: 12px;
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    animation: fadeInScale 0.3s ease-in-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Modal Header */
+.modal-header {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    padding: 20px;
+}
+
+/* Checkout Items List */
+.checkout-items-list {
+    max-height: 320px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+    padding: 10px;
+    box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Divider */
+.divider {
+    height: 2px;
+    background: linear-gradient(to right, #007bff, #0056b3);
+    margin: 20px 0;
+}
+
+/* Total Price Styling */
+.total-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #28a745;
+}
+
+/* Stylish Select Dropdown */
+.stylish-select {
+    border-radius: 8px;
+    padding: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Stylish Input Fields */
+.stylish-input {
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid rgba(0, 123, 255, 0.5);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Buttons */
+.btn {
+    transition: all 0.3s ease-in-out;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+/* Cancel Button */
+.cancel-btn {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    transition: background 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background: #cc0000;
+}
+
+/* Confirm Button */
+.confirm-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    transition: background 0.3s ease;
+}
+
+.confirm-btn:hover {
+    background: #1e7e34;
+}
+
+/* Error Message */
+.error-message {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .receipt-modal {
+        width: 95%;
+    }
+}
+</style>

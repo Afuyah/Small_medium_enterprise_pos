@@ -1,0 +1,81 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Home - Nawiri Enterprise{% endblock %}
+
+{% block content %}
+<div class="container-fluid d-flex align-items-center justify-content-center vh-100 home-container">
+    <div class="text-center glass-effect p-5 rounded">
+        <h1 class="welcome-title">Nawiri <span class="brand-name">Enterprise</span></h1>
+        <p class="welcome-description">All-in-One POS Solution</p>
+        <a href="{{ url_for('auth.login') }}" class="btn btn-primary btn-custom mt-4">Log in</a>
+    </div>
+</div>
+<style>
+    /* Full-Screen Centering */
+.home-container {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+/* Glassmorphism Effect */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    color: white;
+}
+
+/* Title Styling */
+.welcome-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.brand-name {
+    color: #38bdf8;
+}
+
+/* Description */
+.welcome-description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Button Customization */
+.btn-custom {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    transform: scale(1.05);
+}
+
+/* Smooth Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+</style>
+
+<script>
+
+</script>
+{% endblock %}
